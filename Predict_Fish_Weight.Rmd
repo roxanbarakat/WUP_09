@@ -52,6 +52,7 @@ The best two regression model is height and width.
 best.model <- lm(Weight~Height+Width,data=Perch)
 summary(best.model)
 ```
+Out of all the models, the best 2 regression model and the best model is the same which is: Height and Width which is confirmed by the  previous given graph and data.
 
 ## Pike
 
