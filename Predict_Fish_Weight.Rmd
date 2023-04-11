@@ -24,12 +24,34 @@ Fish <-read.csv(file="Fish.csv",header=TRUE)
 ```
 ## Perch
 ```{r}
-Perch <- filter(fish, Species=="Perch")
+Perch <- filter(Fish, Species=="Perch")
+Perch <- select(Perch,-(Species))
 ```
+
 ### Best Models
 
-### Best Two regressor model
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Perch,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
 
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="topright",main="Adjusted R^2")
+```
+The best two regression model is height and width.
+
+### Best Two regressor model
+```{r}
+best.model <- lm(Weight~Height+Width,data=Perch)
+summary(best.model)
+```
 
 ## Pike
 
