@@ -60,10 +60,10 @@ Out of all the models, the best 2 regression model and the best model is the sam
 ```{r}
 best_Perch_Model <- lm(Weight~Height+Width,data=Perch)
 Five_Element_Perch_Model <- lm(Weight~.,data=Perch)
-anova(best_Perch_Model, one_perch_model, Five_Element_Perch_Model)
+anova(best_Perch_Model, Five_Element_Perch_Model)
 
 ```
-The data shows that there's no statistical difference between the best Perch model ( 2 element model ) and the the five element Perch model; The anova test confirms this. By comparing the best perch model, one perch model, and the five element perch model tells us that the best model is the one element model.
+The data shows that there's no statistical difference between the best Perch model ( 2 element model ) and the the five element Perch model; The anova test confirms this and the p-value is larger than 0.5 and closer to 1 which means there's no significant difference.  This analysis of variance shows that there's not much difference when comparing it against the 5 element model.
 
 
 ## Pike
