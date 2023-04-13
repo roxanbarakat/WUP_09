@@ -60,7 +60,6 @@ Out of all the models, the best 2 regression model and the best model is the sam
 ```{r}
 best_Perch_Model <- lm(Weight~Height+Width,data=Perch)
 Five_Element_Perch_Model <- lm(Weight~.,data=Perch)
-one_perch_model <- lm(Weight~Height,data=Perch)
 anova(best_Perch_Model, one_perch_model, Five_Element_Perch_Model)
 
 ```
