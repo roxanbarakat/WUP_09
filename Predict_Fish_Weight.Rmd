@@ -132,5 +132,17 @@ subsets(regsubsets.out,statistic="adjr2",legend="bottomleft",main="Adjusted R^2"
 Best model is 2 element model, worst model is the 5 element model, now using anova we will compare them. 
 
 ### Best Two regressor model
+```{r}
+roach_two_element_model <- lm(Weight~Length3,data=Roach)
+summary(roach_two_element_model)
+roach_five_element_model <- lm(Weight~Length1+Length2+Length3, data=Roach)
+```
+
+```{r}
+ roach_two_element_model<- lm(Weight~Length3,data=Roach)
+ roach_five_element_model<- lm(Weight~Length1+Length2+Length3, data=Roach)
+anova(roach_two_element_model, roach_five_element_model)
+```
+By using the anova test, we can conclude that 
 
 ## Final Summary Statements
