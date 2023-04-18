@@ -133,16 +133,17 @@ Best model is 2 element model, worst model is the 5 element model, now using ano
 
 ### Best Two regressor model
 ```{r}
-roach_two_element_model <- lm(Weight~Length3,data=Roach)
+roach_two_element_model <- lm(Weight~Length3+Width,data=Roach)
 summary(roach_two_element_model)
-roach_five_element_model <- lm(Weight~Length1+Length2+Length3, data=Roach)
+roach_five_element_model <- lm(Weight~Length1+Length2+Length3,Height,Width, data=Roach)
 ```
 
 ```{r}
- roach_two_element_model<- lm(Weight~Length3,data=Roach)
- roach_five_element_model<- lm(Weight~Length1+Length2+Length3, data=Roach)
+ roach_two_element_model<- lm(Weight~Length3+Width,data=Roach)
+ roach_five_element_model<- lm(Weight~Length1+Length2+Length3,Height,Width, data=Roach)
 anova(roach_two_element_model, roach_five_element_model)
 ```
-By using the anova test, we can conclude that 
+By using the anova test, we can conclude that there's no significant different between the two.
 
 ## Final Summary Statements
+This exercise is about a fish salesman who's scale is broken, yet he the salesman has the ability to measure how long the fish is. My duty was to determine which is the best model to estimate and predict the weight of the fish without using a scale. We can conclude that there's no significant difference between the 2 element model
