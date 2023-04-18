@@ -135,12 +135,11 @@ Best model is 2 element model, worst model is the 5 element model, now using ano
 ```{r}
 roach_two_element_model <- lm(Weight~Length3+Width,data=Roach)
 summary(roach_two_element_model)
-roach_five_element_model <- lm(Weight~Length1+Length2+Length3,Height,Width, data=Roach)
 ```
 
 ```{r}
  roach_two_element_model<- lm(Weight~Length3+Width,data=Roach)
- roach_five_element_model<- lm(Weight~Length1+Length2+Length3,Height,Width, data=Roach)
+ roach_five_element_model<- lm(Weight~., data=Roach)
 anova(roach_two_element_model, roach_five_element_model)
 ```
 By using the anova test, we can conclude that there's no significant different between the two.
