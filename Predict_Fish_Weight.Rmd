@@ -95,6 +95,14 @@ Pike_best.model <- lm(Weight~.,data=Pike)
 summary(Pike_best.model)
 Pike_best_2_R_model <- lm(Weight~Length1+Length3,data=Pike)
 ```
+By comparing the best model with the best 2 element model and from the data we can infer that there's a difference.
+
+```{r}
+Pike_best.model <- lm(Weight~.,data=Pike)
+Pike_best_R_Model <- lm(Weight~Length1+Length3, data=Pike)
+anova(Pike_best.model, Pike_best_2_R_model)
+```
+
 
 ## Roach
 
