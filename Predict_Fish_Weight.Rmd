@@ -107,8 +107,27 @@ anova(Pike_best.model, Pike_best_2_R_model)
 Since the p-value is less than 0.5 they're significantly different. The model with length 1,length 2, length 3, height and width is better than the model with only length 1 and length 3.
 
 ## Roach
+```{r}
+Roach <- filter(Fish, Species=="Roach")
+Roach <- select(Roach,-(Species))
+```
 
 ### Best Models
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Roach,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomleft",main="Adjusted R^2")
+```
 
 ### Best Two regressor model
 
