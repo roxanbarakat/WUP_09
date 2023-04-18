@@ -129,6 +129,8 @@ library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomleft",main="Adjusted R^2")
 ```
 
+Best model is 2 element model, worst model is the 5 element model, now using anova we will compare them. 
+
 ### Best Two regressor model
 
 ## Final Summary Statements
