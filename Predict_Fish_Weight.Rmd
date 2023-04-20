@@ -46,7 +46,7 @@ library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="topright",main="Adjusted R^2")
 ```
 
-The best two regression model is height and width.
+The best model is the two element model which displays height and width.
 
 ### Best Two regressor model
 ```{r}
@@ -88,6 +88,7 @@ library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="topleft",main="Adjusted R^2")
 ```
 
+The graph shows that the best model in Pike is the 5 element model which includes: Length 1, Length 2, Length 3, Height, and Width.
 
 ### Best Two regressor model
 ```{r}
@@ -96,7 +97,7 @@ summary(Pike_best.model)
 Pike_best_2_R_model <- lm(Weight~Length1+Length3,data=Pike)
 ```
 
-By comparing the best model with the best 2 element model and from the data we can infer that there's a difference between the two models. 
+By comparing the best model (which is the 5 element model) with the  2 element model and from the data we can infer that there's a significant difference between the two models.
 
 ```{r}
 Pike_best.model <- lm(Weight~.,data=Pike)
@@ -129,20 +130,30 @@ library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomleft",main="Adjusted R^2")
 ```
 
-Best model is 2 element model, worst model is the 5 element model, now using anova we will compare them. 
+The best roach model is the 2 element model, and the worst model is the 5 element model, now using anova we will compare them. 
 
 ### Best Two regressor model
 ```{r}
 roach_two_element_model <- lm(Weight~Length3+Width,data=Roach)
 summary(roach_two_element_model)
 ```
-
+In this case, the best model and the 2 element model are the same since the best model is the 2 element one which includes Length 3 and Width.
 ```{r}
  roach_two_element_model<- lm(Weight~Length3+Width,data=Roach)
  roach_five_element_model<- lm(Weight~., data=Roach)
 anova(roach_two_element_model, roach_five_element_model)
 ```
-By using the anova test, we can conclude that there's no significant different between the two.
+By using the anova test, we can conclude that there's no significant different between the 2 element model and 5 element model although the graph shows otherwise, yet statistically speaking there's no difference between them.
 
 ## Final Summary Statements
-This exercise is about a fish salesman who's scale is broken, yet he the salesman has the ability to measure how long the fish is. My duty was to determine which is the best model to estimate and predict the weight of the fish without using a scale. We can conclude that there's no significant difference between the 2 element model
+This exercise is about a fish salesman who's scale is broken, yet he the salesman has the ability to measure how long the fish is. My duty was to determine which is the best model to estimate and predict the weight of the fish without using a scale. I used multiple methods such as the p-value which indicates that more than 0.05 is considered statistically significant while a figure that is less than 0.01 is viewed as highly statistically significant. Along with the p-value, I looked at the anova test which is a statistical test used to analyze the difference between the means of two or more groups. 
+
+In Perch, according to the graph, we conclude that the best model is the 2 element model (H,W). 
+However, using the anova and p-value test we infer that there's no statistical difference between the 2 element model and the 5 element model.
+
+
+In Pike,  according to the graph, we conclude that the best model is the 5 element model (L1,L2,L3,H,W). 
+After comparing the 2 element model and the 5 element model, we infer that there's a statistically difference between the two models which means that best model is the 5 element model.
+
+In Roach,  according to the graph, we conclude that the best model is the 2 element model (L3,W).
+However, using the anova and p-value test we infer that there's no statistical difference between the 2 element model and the 5 element model.
